@@ -32,6 +32,15 @@ export const metadata: Metadata = {
       "Full-stack developer crafting beautiful, scalable web applications.",
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Ansh Jadhav — Full Stack Developer",
+    description:
+      "Full-stack developer crafting beautiful, scalable web applications.",
+  },
+  other: {
+    "theme-color": "#8b5cf6",
+  },
 };
 
 export default function RootLayout({
@@ -44,6 +53,9 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${spaceGrotesk.variable} antialiased`}
       >
+        <a href="#main" className="skip-link">
+          Skip to content
+        </a>
         {children}
       </body>
     </html>

@@ -37,8 +37,19 @@
   --color-background: var(--bg-primary);
   --color-foreground: var(--text-primary);
   --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-glow: var(--accent-glow);
+  --color-accent-subtle: var(--accent-subtle);
+  --color-muted: var(--text-muted);
+  --color-secondary: var(--text-secondary);
+  --color-border: var(--border);
+  --color-border-hover: var(--border-hover);
+  --color-card: var(--bg-card);
+  --color-card-hover: var(--bg-card-hover);
+  --color-surface: var(--bg-secondary);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-space-grotesk);
 }
 
 /* ─── Base Styles ─── */
@@ -69,6 +80,26 @@ body {
 ::selection {
   background: var(--accent-glow);
   color: var(--accent-hover);
+}
+
+/* ─── Skip to Content (Accessibility) ─── */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 16px;
+  z-index: 9999;
+  padding: 12px 24px;
+  background: var(--accent);
+  color: #fff;
+  border-radius: var(--radius-sm);
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+  top: 16px;
 }
 
 /* ─── Custom Scrollbar ─── */
@@ -110,6 +141,15 @@ body {
   background-clip: text;
 }
 
+/* ─── Stroke Outline Text ─── */
+.stroke-outline {
+  -webkit-text-stroke: 1px var(--text-muted);
+}
+
+.stroke-outline-subtle {
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.06);
+}
+
 /* ─── Card Styles ─── */
 .card {
   background: var(--bg-card);
@@ -127,7 +167,7 @@ body {
     0 0 80px var(--accent-subtle);
 }
 
-/* ─── Gradient Border (Technions-style) ─── */
+/* ─── Gradient Border ─── */
 .gradient-border {
   position: relative;
 }
@@ -156,15 +196,49 @@ body {
   opacity: 1;
 }
 
-/* ─── Progressive Blur Navbar (Technions-style) ─── */
-.nav-blur {
-  position: fixed;
-  z-index: 50;
-  inset: 0 0 auto 0;
-  pointer-events: none;
+/* ─── Hero Background Effects ─── */
+.hero-glow {
+  background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
+  filter: blur(120px);
 }
-.nav-blur-inner {
-  pointer-events: auto;
+
+.hero-ambient {
+  background: radial-gradient(
+    ellipse 80% 60% at 50% 0%,
+    rgba(139, 92, 246, 0.08) 0%,
+    transparent 60%
+  );
+}
+
+.hero-grid {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* ─── About Visual Grid ─── */
+.about-grid {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.3) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.3) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.about-card-bg {
+  background: linear-gradient(
+    135deg,
+    var(--bg-card) 0%,
+    var(--bg-secondary) 100%
+  );
+}
+
+.about-inner-glow {
+  background: radial-gradient(
+    circle at 30% 40%,
+    var(--accent-glow) 0%,
+    transparent 60%
+  );
 }
 
 /* ─── Marquee Animation ─── */

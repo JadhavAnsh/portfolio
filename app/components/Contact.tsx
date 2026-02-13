@@ -1,18 +1,12 @@
 "use client";
 
-import { Github, Linkedin, Instagram, Mail, Send } from "lucide-react";
+import { Send } from "lucide-react";
 import AnimatedSection from "./AnimatedSection";
-
-const socials = [
-  { icon: Github, href: "https://github.com/", label: "GitHub" },
-  { icon: Linkedin, href: "https://linkedin.com/in/", label: "LinkedIn" },
-  { icon: Instagram, href: "https://instagram.com/", label: "Instagram" },
-  { icon: Mail, href: "mailto:your@email.com", label: "Email" },
-];
+import { SOCIALS } from "../lib/constants";
 
 export default function Contact() {
   return (
-    <section id="contact" className="section">
+    <section id="contact" className="section" aria-label="Contact">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
         {/* Left: Heading */}
         <div>
@@ -20,17 +14,14 @@ export default function Contact() {
             <span className="section-label">Get In Touch</span>
           </AnimatedSection>
           <AnimatedSection delay={0.1}>
-            <h2
-              className="text-[clamp(2rem,5vw,4.5rem)] font-extrabold leading-none tracking-tighter mb-8"
-              style={{ fontFamily: "var(--font-space-grotesk)" }}
-            >
+            <h2 className="text-[clamp(2rem,5vw,4.5rem)] font-extrabold leading-none tracking-tighter mb-8 font-display">
               Let&apos;s Make
               <br />
               It <span className="text-gradient">Happen</span>
             </h2>
           </AnimatedSection>
           <AnimatedSection delay={0.2}>
-            <p className="text-(--text-secondary) leading-relaxed mb-12 max-w-md">
+            <p className="text-secondary leading-relaxed mb-12 max-w-md">
               Have a project in mind? Let&apos;s collaborate and build something
               amazing together. I&apos;m always open to new opportunities and
               interesting conversations.
@@ -40,16 +31,16 @@ export default function Contact() {
           {/* Social Links */}
           <AnimatedSection delay={0.3}>
             <div className="flex gap-3 sm:gap-4">
-              {socials.map((social) => (
+              {SOCIALS.map((social) => (
                 <a
                   key={social.label}
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-11 h-11 sm:w-12 sm:h-12 rounded-full border border-(--border) flex items-center justify-center text-(--text-secondary) hover:text-(--accent) hover:border-(--accent) hover:bg-(--accent-subtle) transition-all duration-300"
+                  className="w-11 h-11 sm:w-12 sm:h-12 rounded-full border border-border flex items-center justify-center text-secondary hover:text-accent hover:border-accent hover:bg-accent-subtle transition-all duration-300"
                   aria-label={social.label}
                 >
-                  <social.icon size={18} />
+                  <social.icon size={18} aria-hidden="true" />
                 </a>
               ))}
             </div>
@@ -63,62 +54,70 @@ export default function Contact() {
               <div>
                 <label
                   htmlFor="name"
-                  className="block text-xs font-medium text-(--text-muted) uppercase tracking-wider mb-2"
+                  className="block text-xs font-medium text-muted uppercase tracking-wider mb-2"
                 >
                   Name
                 </label>
                 <input
                   type="text"
                   id="name"
+                  name="name"
                   placeholder="Your name"
                   className="input-field"
+                  required
                 />
               </div>
               <div>
                 <label
                   htmlFor="email"
-                  className="block text-xs font-medium text-(--text-muted) uppercase tracking-wider mb-2"
+                  className="block text-xs font-medium text-muted uppercase tracking-wider mb-2"
                 >
                   Email
                 </label>
                 <input
                   type="email"
                   id="email"
+                  name="email"
                   placeholder="your@email.com"
                   className="input-field"
+                  required
                 />
               </div>
             </div>
             <div>
               <label
                 htmlFor="subject"
-                className="block text-xs font-medium text-(--text-muted) uppercase tracking-wider mb-2"
+                className="block text-xs font-medium text-muted uppercase tracking-wider mb-2"
               >
                 Subject
               </label>
               <input
                 type="text"
                 id="subject"
+                name="subject"
                 placeholder="Project discussion"
                 className="input-field"
+                required
               />
             </div>
             <div>
               <label
                 htmlFor="message"
-                className="block text-xs font-medium text-(--text-muted) uppercase tracking-wider mb-2"
+                className="block text-xs font-medium text-muted uppercase tracking-wider mb-2"
               >
                 Message
               </label>
               <textarea
                 id="message"
+                name="message"
                 rows={5}
                 placeholder="Tell me about your project..."
                 className="input-field resize-none"
+                required
               />
             </div>
             <button type="submit" className="btn-primary w-full sm:w-auto mt-2">
-              <Send size={16} />
+              <Send size={16} aria-hidden="true" />
               Send Message
             </button>
           </form>

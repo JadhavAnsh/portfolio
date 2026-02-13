@@ -12,17 +12,17 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <main>
+      <main id="main" role="main">
         <Hero />
-        <div className="section-divider" />
+        <div className="section-divider" role="separator" aria-hidden="true" />
         <Services />
-        <div className="section-divider" />
+        <div className="section-divider" role="separator" aria-hidden="true" />
         <Projects />
         <Marquee />
         <Skills />
-        <div className="section-divider" />
+        <div className="section-divider" role="separator" aria-hidden="true" />
         <About />
-        <div className="section-divider" />
+        <div className="section-divider" role="separator" aria-hidden="true" />
         <Contact />
       </main>
       <Footer />
