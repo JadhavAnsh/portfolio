@@ -15,16 +15,29 @@ export default function Services() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-14">
         {SERVICES.map((service, i) => (
-          <AnimatedSection key={service.title} delay={0.15 + i * 0.1}>
-            <div className="card gradient-border p-8 sm:p-10 h-full group">
-              <div className="w-12 h-12 rounded-xl bg-accent-subtle flex items-center justify-center mb-8 group-hover:bg-accent/15 transition-colors duration-300">
+          <AnimatedSection
+            key={service.title}
+            delay={0.15 + i * 0.1}
+            className="h-full"
+          >
+            <div
+              className="card gradient-border h-full group"
+              style={{ padding: "12px" }}
+            >
+              <div
+                className="w-12 h-12 rounded-xl bg-accent-subtle flex items-center justify-center group-hover:bg-accent/15 transition-colors duration-300"
+                style={{ marginBottom: "20px" }}
+              >
                 <service.icon
                   size={22}
                   className="text-accent group-hover:text-accent-hover transition-colors"
                   aria-hidden="true"
                 />
               </div>
-              <h3 className="text-xl font-semibold mb-4 text-foreground font-display">
+              <h3
+                className="text-xl font-semibold text-foreground font-display"
+                style={{ marginBottom: "10px" }}
+              >
                 {service.title}
               </h3>
               <p className="text-secondary text-sm leading-relaxed">

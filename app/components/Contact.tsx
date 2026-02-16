@@ -7,21 +7,27 @@ import { SOCIALS } from "../lib/constants";
 export default function Contact() {
   return (
     <section id="contact" className="section" aria-label="Contact">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
+      <div className="grid grid-cols-1 lg:grid-cols-2" style={{ gap: "40px" }}>
         {/* Left: Heading */}
         <div>
           <AnimatedSection>
             <span className="section-label">Get In Touch</span>
           </AnimatedSection>
           <AnimatedSection delay={0.1}>
-            <h2 className="text-[clamp(2rem,5vw,4.5rem)] font-extrabold leading-none tracking-tighter mb-8 font-display">
+            <h2
+              className="text-[clamp(2rem,5vw,4.5rem)] font-extrabold leading-none tracking-tighter font-display"
+              style={{ marginBottom: "24px" }}
+            >
               Let&apos;s Make
               <br />
               It <span className="text-gradient">Happen</span>
             </h2>
           </AnimatedSection>
           <AnimatedSection delay={0.2}>
-            <p className="text-secondary leading-relaxed mb-12 max-w-md">
+            <p
+              className="text-secondary leading-relaxed max-w-md"
+              style={{ marginBottom: "28px" }}
+            >
               Have a project in mind? Let&apos;s collaborate and build something
               amazing together. I&apos;m always open to new opportunities and
               interesting conversations.
@@ -30,7 +36,7 @@ export default function Contact() {
 
           {/* Social Links */}
           <AnimatedSection delay={0.3}>
-            <div className="flex gap-3 sm:gap-4">
+            <div className="flex" style={{ gap: "12px" }}>
               {SOCIALS.map((social) => (
                 <a
                   key={social.label}
@@ -49,12 +55,19 @@ export default function Contact() {
 
         {/* Right: Form */}
         <AnimatedSection delay={0.2} direction="right">
-          <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <form
+            onSubmit={(e) => e.preventDefault()}
+            style={{ display: "flex", flexDirection: "column", gap: "18px" }}
+          >
+            <div
+              className="grid grid-cols-1 sm:grid-cols-2"
+              style={{ gap: "18px" }}
+            >
               <div>
                 <label
                   htmlFor="name"
-                  className="block text-xs font-medium text-muted uppercase tracking-wider mb-2"
+                  className="block text-xs font-medium text-muted uppercase tracking-wider"
+                  style={{ marginBottom: "6px" }}
                 >
                   Name
                 </label>
@@ -70,7 +83,8 @@ export default function Contact() {
               <div>
                 <label
                   htmlFor="email"
-                  className="block text-xs font-medium text-muted uppercase tracking-wider mb-2"
+                  className="block text-xs font-medium text-muted uppercase tracking-wider"
+                  style={{ marginBottom: "6px" }}
                 >
                   Email
                 </label>
@@ -87,7 +101,8 @@ export default function Contact() {
             <div>
               <label
                 htmlFor="subject"
-                className="block text-xs font-medium text-muted uppercase tracking-wider mb-2"
+                className="block text-xs font-medium text-muted uppercase tracking-wider"
+                style={{ marginBottom: "6px" }}
               >
                 Subject
               </label>
@@ -103,7 +118,8 @@ export default function Contact() {
             <div>
               <label
                 htmlFor="message"
-                className="block text-xs font-medium text-muted uppercase tracking-wider mb-2"
+                className="block text-xs font-medium text-muted uppercase tracking-wider"
+                style={{ marginBottom: "6px" }}
               >
                 Message
               </label>
@@ -116,7 +132,11 @@ export default function Contact() {
                 required
               />
             </div>
-            <button type="submit" className="btn-primary w-full sm:w-auto mt-2">
+            <button
+              type="submit"
+              className="btn-primary w-full sm:w-auto"
+              style={{ marginTop: "6px" }}
+            >
               <Send size={16} aria-hidden="true" />
               Send Message
             </button>

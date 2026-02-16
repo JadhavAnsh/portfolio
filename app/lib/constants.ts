@@ -168,7 +168,6 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
       "CI/CD",
       "Responsive Design",
       "UI/UX Principles",
-      "Mobile App Architecture",
     ],
   },
 ];

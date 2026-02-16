@@ -60,14 +60,15 @@ export default function Navbar() {
         <nav
           role="navigation"
           aria-label="Main navigation"
-          className={`w-full max-w-4xl rounded-full border transition-all duration-500 ${
+          className={`w-full max-w-4xl rounded-full border overflow-hidden transition-all duration-500 ${
             scrolled
               ? "bg-[#0a0a0a]/95 backdrop-blur-xl border-white/10 shadow-2xl shadow-black/50"
               : "bg-[#0d0d0d]/85 backdrop-blur-md border-white/8"
           }`}
+          style={{ paddingLeft: "3rem", paddingRight: "3rem" }}
         >
           {/* Inner container */}
-          <div className="relative flex items-center justify-between min-h-20 md:min-h-24 py-4 px-12 md:px-20">
+          <div className="relative flex items-center justify-between h-16 md:h-[72px]">
             {/* Logo */}
             <a
               href="#home"
@@ -75,14 +76,14 @@ export default function Navbar() {
                 e.preventDefault();
                 handleNavClick("#home");
               }}
-              className="pl-4 text-lg md:text-xl font-bold tracking-tight text-foreground hover:text-accent transition-colors duration-300 shrink-0 font-display"
+              className="text-lg md:text-xl font-bold tracking-tight text-foreground hover:text-accent transition-colors duration-300 shrink-0 font-display"
               aria-label="Go to homepage"
             >
               AJ<span className="text-accent">.</span>
             </a>
 
             {/* Nav Links — Absolutely Centered */}
-            <div className="hidden md:flex items-center gap-6 lg:gap-10 absolute left-1/2 -translate-x-1/2">
+            <div className="hidden md:flex items-center gap-8 lg:gap-12 absolute left-1/2 -translate-x-1/2">
               {NAV_LINKS.map((link) => (
                 <a
                   key={link.href}
@@ -112,8 +113,8 @@ export default function Navbar() {
                 e.preventDefault();
                 handleNavClick("#contact");
               }}
-              className="hidden md:inline-flex items-center gap-2.5 mr-4 text-sm font-medium tracking-widest uppercase rounded-full border border-white/20 bg-white/5 text-white/90 hover:bg-white/10 hover:border-white/30 transition-all duration-300 shrink-0"
-              style={{ padding: "14px 32px" }}
+              className="hidden md:inline-flex items-center gap-2.5 text-sm font-medium tracking-widest uppercase rounded-full border border-white/20 bg-white/5 text-white/90 hover:bg-white/10 hover:border-white/30 transition-all duration-300 shrink-0"
+              style={{ padding: "12px 24px" }}
             >
               CONTACT
               <ArrowUpRight size={15} strokeWidth={2.5} />

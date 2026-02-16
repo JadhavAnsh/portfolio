@@ -66,7 +66,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-screen w-full flex flex-col items-center justify-center overflow-hidden"
+      className="relative min-h-screen w-full flex flex-col items-center justify-center overflow-hidden pt-40"
       aria-label="Hero section"
     >
       {/* Gradient Background Glow */}
@@ -81,10 +81,10 @@ export default function Hero() {
         aria-hidden="true"
       />
 
-      <div className="relative z-10 w-full max-w-4xl mx-auto px-6 sm:px-8 flex flex-col items-center text-center">
+      <div className="relative z-10 w-full max-w-4xl mx-auto px-6 sm:px-8 flex flex-col items-center text-center gap-6">
         {/* Name */}
         <motion.h1
-          className="text-[clamp(2.5rem,10vw,9rem)] font-extrabold leading-[0.9] tracking-tighter mb-10 font-display"
+          className="text-[clamp(2.5rem,10vw,9rem)] font-extrabold leading-[0.9] tracking-tighter font-display"
           style={{ perspective: "600px" }}
           variants={containerVariants}
           initial="hidden"
@@ -112,7 +112,7 @@ export default function Hero() {
 
         {/* Subtitle */}
         <motion.p
-          className="text-base sm:text-lg md:text-xl text-secondary max-w-md mx-auto mb-14 leading-relaxed"
+          className="text-base sm:text-lg md:text-xl text-secondary max-w-md mx-auto leading-relaxed"
           variants={subtitleVariants}
           initial="hidden"
           animate="visible"

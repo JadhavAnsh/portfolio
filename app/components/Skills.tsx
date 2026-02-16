@@ -13,15 +13,26 @@ export default function Skills() {
         </h2>
       </AnimatedSection>
 
-      <div className="mt-16 space-y-16">
+      <div
+        style={{
+          marginTop: "48px",
+          display: "flex",
+          flexDirection: "column",
+          gap: "20px",
+        }}
+      >
         {SKILL_CATEGORIES.map((category, catIdx) => (
           <AnimatedSection key={category.title} delay={0.15 + catIdx * 0.1}>
             <div>
-              <h3 className="text-sm font-medium uppercase tracking-wider text-muted mb-8 font-display">
+              <h3
+                className="text-sm font-medium uppercase tracking-wider text-muted font-display"
+                style={{ marginBottom: "10px" }}
+              >
                 {category.title}
               </h3>
               <ul
-                className="flex flex-wrap gap-3 sm:gap-4"
+                className="flex flex-wrap"
+                style={{ gap: "10px" }}
                 aria-label={`${category.title} skills`}
               >
                 {category.skills.map((skill) => (

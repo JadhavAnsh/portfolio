@@ -14,84 +14,101 @@ export default function Projects() {
         </h2>
       </AnimatedSection>
 
-      <div className="mt-14 space-y-8">
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "10px",
+        }}
+      >
         {PROJECTS.map((project, i) => (
           <AnimatedSection key={project.title} delay={0.15 + i * 0.08}>
-            <article className="card gradient-border group cursor-pointer overflow-hidden">
-              <div className="p-8 sm:p-10 md:p-12">
-                {/* Top Row: Meta Info */}
-                <div className="flex items-center gap-3 mb-5">
-                  <span className="text-xs font-medium uppercase tracking-wider text-accent">
+            {/* Divider between cards */}
+            {i > 0 && <div className="project-divider" aria-hidden="true" />}
+
+            <article
+              className="card gradient-border project-card group cursor-pointer"
+              style={{ padding: "10px" }}
+            >
+              {/* Category + Year + Number Row */}
+              <div
+                className="flex items-center justify-between"
+                style={{ marginBottom: "8px" }}
+              >
+                <div className="flex items-center gap-3">
+                  <span className="project-number font-mono" aria-hidden="true">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <span
+                    className="w-px h-4 bg-border-hover"
+                    aria-hidden="true"
+                  />
+                  <span className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-accent">
                     {project.category}
                   </span>
-                  <span className="text-muted" aria-hidden="true">
+                  <span className="text-muted text-xs" aria-hidden="true">
                     ·
                   </span>
-                  <span className="text-xs text-muted">
+                  <span className="text-xs sm:text-sm text-secondary">
                     <time>{project.year}</time>
                   </span>
                 </div>
 
-                {/* Title Row */}
-                <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-5">
-                  <div>
-                    <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-foreground group-hover:text-gradient transition-all duration-300 font-display">
-                      {project.title}
-                    </h3>
-                    <p className="text-base sm:text-lg text-muted mt-1 font-medium">
-                      {project.subtitle}
-                    </p>
-                  </div>
-
-                  {/* Action Buttons */}
-                  <div className="flex items-center gap-3 shrink-0">
-                    <a
-                      href={project.liveUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-secondary hover:text-accent hover:border-accent transition-all duration-300"
-                      aria-label={`View ${project.title} live`}
-                    >
-                      <ExternalLink size={16} aria-hidden="true" />
-                    </a>
-                    <a
-                      href={project.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-secondary hover:text-accent hover:border-accent transition-all duration-300"
-                      aria-label={`View ${project.title} source code`}
-                    >
-                      <Github size={16} aria-hidden="true" />
-                    </a>
-                  </div>
+                {/* Action Buttons */}
+                <div className="flex items-center gap-2.5 shrink-0">
+                  <a
+                    href={project.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-9 h-9 rounded-full border border-border flex items-center justify-center text-muted hover:text-accent hover:border-accent transition-all duration-300"
+                    aria-label={`View ${project.title} live`}
+                  >
+                    <ExternalLink size={14} aria-hidden="true" />
+                  </a>
+                  <a
+                    href={project.githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-9 h-9 rounded-full border border-border flex items-center justify-center text-muted hover:text-accent hover:border-accent transition-all duration-300"
+                    aria-label={`View ${project.title} source code`}
+                  >
+                    <Github size={14} aria-hidden="true" />
+                  </a>
                 </div>
-
-                {/* Description */}
-                <p className="text-secondary text-sm leading-relaxed mb-8 max-w-2xl">
-                  {project.description}
-                </p>
-
-                {/* Tech Tags */}
-                <ul
-                  className="flex flex-wrap gap-2"
-                  aria-label="Technologies used"
-                >
-                  {project.tech.map((tech) => (
-                    <li
-                      key={tech}
-                      className="text-xs px-3 py-1.5 rounded-full bg-surface border border-border text-muted group-hover:text-secondary transition-colors"
-                    >
-                      {tech}
-                    </li>
-                  ))}
-                </ul>
               </div>
 
-              {/* Bottom Gradient Line */}
-              <div
-                className="h-[2px] w-0 group-hover:w-full bg-linear-to-r from-accent via-accent-hover to-transparent transition-all duration-700"
-                aria-hidden="true"
-              />
+              {/* Title */}
+              <h3 className="text-xl sm:text-2xl md:text-[1.75rem] font-bold text-foreground group-hover:text-gradient transition-all duration-300 font-display leading-tight">
+                {project.title}
+              </h3>
+
+              {/* Subtitle */}
+              <p
+                className="text-[0.7rem] sm:text-xs uppercase tracking-[0.2em] text-muted font-medium"
+                style={{ marginTop: "2px" }}
+              >
+                {project.subtitle}
+              </p>
+
+              {/* Description */}
+              <p
+                className="text-secondary text-sm leading-relaxed max-w-xl"
+                style={{ marginTop: "6px", marginBottom: "8px" }}
+              >
+                {project.description}
+              </p>
+
+              {/* Tech Tags */}
+              <ul
+                className="flex flex-wrap gap-2"
+                aria-label="Technologies used"
+              >
+                {project.tech.map((tech) => (
+                  <li key={tech} className="tech-tag">
+                    {tech}
+                  </li>
+                ))}
+              </ul>
             </article>
           </AnimatedSection>
         ))}

@@ -4,7 +4,10 @@ import { STATS, PERSONAL } from "../lib/constants";
 export default function About() {
   return (
     <section id="about" className="section" aria-label="About Me">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+      <div
+        className="grid grid-cols-1 lg:grid-cols-2 items-center"
+        style={{ gap: "40px" }}
+      >
         {/* Left: Text Content */}
         <div>
           <AnimatedSection>
@@ -18,7 +21,10 @@ export default function About() {
             </h2>
           </AnimatedSection>
           <AnimatedSection delay={0.2}>
-            <p className="text-secondary leading-relaxed mb-6">
+            <p
+              className="text-secondary leading-relaxed"
+              style={{ marginBottom: "12px" }}
+            >
               I&apos;m a {PERSONAL.role} and Computer Engineering student
               passionate about crafting web applications that balance aesthetics
               with functionality. I believe great software starts with
@@ -27,7 +33,10 @@ export default function About() {
             </p>
           </AnimatedSection>
           <AnimatedSection delay={0.3}>
-            <p className="text-secondary leading-relaxed mb-14">
+            <p
+              className="text-secondary leading-relaxed"
+              style={{ marginBottom: "28px" }}
+            >
               From responsive frontends to robust backend systems, I bring ideas
               to life with clean code, modern architectures, and an eye for
               detail. When I&apos;m not coding, I&apos;m exploring new
@@ -37,13 +46,19 @@ export default function About() {
 
           {/* Stats */}
           <AnimatedSection delay={0.4}>
-            <dl className="grid grid-cols-3 gap-4 sm:gap-6">
+            <dl className="grid grid-cols-3" style={{ gap: "16px" }}>
               {STATS.map((stat) => (
                 <div key={stat.label}>
-                  <dt className="text-xs text-muted uppercase tracking-wider order-2 mt-1">
+                  <dt
+                    className="text-xs text-muted uppercase tracking-wider order-2"
+                    style={{ marginTop: "4px" }}
+                  >
                     {stat.label}
                   </dt>
-                  <dd className="text-2xl sm:text-3xl md:text-4xl font-bold text-accent mb-1 font-display order-1">
+                  <dd
+                    className="text-2xl sm:text-3xl md:text-4xl font-bold text-accent font-display order-1"
+                    style={{ marginBottom: "2px" }}
+                  >
                     {stat.value}
                   </dd>
                 </div>
@@ -65,11 +80,14 @@ export default function About() {
 
               {/* Code-style content */}
               <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-center p-8">
+                <div className="text-center" style={{ padding: "32px" }}>
                   <div className="text-7xl sm:text-8xl md:text-9xl font-extrabold text-accent opacity-15 font-display">
                     {PERSONAL.initials}
                   </div>
-                  <div className="text-sm text-muted mt-4 font-mono">
+                  <div
+                    className="text-sm text-muted font-mono"
+                    style={{ marginTop: "12px" }}
+                  >
                     &lt;fullstack /&gt;
                   </div>
                 </div>
