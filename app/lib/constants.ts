@@ -152,7 +152,6 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
       "NestJS",
       "TailwindCSS",
       "Framer Motion",
-      "GSAP",
       "Flask",
     ],
   },
@@ -180,10 +179,21 @@ export interface SocialLink {
 }
 
 export const SOCIALS: SocialLink[] = [
-  { icon: Github, href: "https://github.com/", label: "GitHub" }, // TODO: Replace with actual URL
-  { icon: Linkedin, href: "https://linkedin.com/in/", label: "LinkedIn" }, // TODO: Replace with actual URL
-  { icon: Instagram, href: "https://instagram.com/", label: "Instagram" }, // TODO: Replace with actual URL
-  { icon: Mail, href: "mailto:your@email.com", label: "Email" }, // TODO: Replace with actual email
+  {
+    icon: Github,
+    href: "https://github.com/JadhavAnsh",
+    label: "GitHub",
+  },
+  {
+    icon: Linkedin,
+    href: "https://linkedin.com/in/anshjadhav",
+    label: "LinkedIn",
+  },
+  {
+    icon: Mail,
+    href: "mailto:contact@anshjadhav.in",
+    label: "Email",
+  },
 ];
 
 /* ─── About Stats ─── */

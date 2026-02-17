@@ -1,10 +1,16 @@
 "use client";
 
-import { Send } from "lucide-react";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+
+import { Send, Check } from "lucide-react";
 import AnimatedSection from "./AnimatedSection";
 import { SOCIALS } from "../lib/constants";
 
 export default function Contact() {
+  const [isSending, setIsSending] = useState(false);
+  const [isSent, setIsSent] = useState(false);
+  const [error, setError] = useState("");
   return (
     <section id="contact" className="section" aria-label="Contact">
       <div className="grid grid-cols-1 lg:grid-cols-2" style={{ gap: "40px" }}>
@@ -56,7 +62,46 @@ export default function Contact() {
         {/* Right: Form */}
         <AnimatedSection delay={0.2} direction="right">
           <form
-            onSubmit={(e) => e.preventDefault()}
+            onSubmit={async (e) => {
+              e.preventDefault();
+              setIsSending(true);
+              setError("");
+
+              const formData = new FormData(e.target as HTMLFormElement);
+              const data = {
+                name: formData.get("name") as string,
+                email: formData.get("email") as string,
+                subject: formData.get("subject") as string,
+                message: formData.get("message") as string,
+                _gotcha: formData.get("_gotcha") as string,
+              };
+
+              try {
+                const res = await fetch("/api/contact", {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify(data),
+                });
+
+                if (!res.ok) {
+                  const result = await res.json();
+                  throw new Error(result.error || "Something went wrong.");
+                }
+
+                setIsSending(false);
+                setIsSent(true);
+                (e.target as HTMLFormElement).reset();
+                setTimeout(() => setIsSent(false), 2000);
+              } catch (err) {
+                setIsSending(false);
+                setError(
+                  err instanceof Error
+                    ? err.message
+                    : "Failed to send message.",
+                );
+                setTimeout(() => setError(""), 4000);
+              }
+            }}
             style={{ display: "flex", flexDirection: "column", gap: "18px" }}
           >
             <div
@@ -132,14 +177,74 @@ export default function Contact() {
                 required
               />
             </div>
+            {/* Honeypot for spam protection */}
+            <input
+              type="text"
+              name="_gotcha"
+              style={{ display: "none" }}
+              tabIndex={-1}
+              autoComplete="off"
+            />
+
             <button
               type="submit"
-              className="btn-primary w-full sm:w-auto"
+              disabled={isSending || isSent}
+              className={`btn-primary w-full sm:w-auto relative overflow-hidden group transition-all duration-300 ${
+                isSent ? "bg-green-500 border-green-500 text-white" : ""
+              }`}
               style={{ marginTop: "6px" }}
             >
-              <Send size={16} aria-hidden="true" />
-              Send Message
+              <div className="relative flex items-center justify-center gap-2 z-10">
+                <AnimatePresence mode="wait">
+                  {isSent ? (
+                    <motion.div
+                      key="sent"
+                      initial={{ y: 20, opacity: 0 }}
+                      animate={{ y: 0, opacity: 1 }}
+                      exit={{ y: -20, opacity: 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="flex items-center gap-2"
+                    >
+                      <Check size={18} aria-hidden="true" />
+                      <span>Message Sent!</span>
+                    </motion.div>
+                  ) : isSending ? (
+                    <motion.div
+                      key="sending"
+                      initial={{ y: 20, opacity: 0 }}
+                      animate={{ y: 0, opacity: 1 }}
+                      exit={{ y: -20, opacity: 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="flex items-center gap-2"
+                    >
+                      <span className="animate-pulse">Sending...</span>
+                    </motion.div>
+                  ) : (
+                    <motion.div
+                      key="idle"
+                      initial={{ y: 20, opacity: 0 }}
+                      animate={{ y: 0, opacity: 1 }}
+                      exit={{ y: -20, opacity: 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="flex items-center gap-2"
+                    >
+                      <Send size={16} aria-hidden="true" />
+                      <span>Send Message</span>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
             </button>
+            {error && (
+              <motion.p
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 10 }}
+                className="text-red-500 text-sm text-center"
+              >
+                {error}
+              </motion.p>
+            )}
           </form>
         </AnimatedSection>
       </div>

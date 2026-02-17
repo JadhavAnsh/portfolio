@@ -65,7 +65,7 @@ export default function Navbar() {
               ? "bg-[#0a0a0a]/95 backdrop-blur-xl border-white/10 shadow-2xl shadow-black/50"
               : "bg-[#0d0d0d]/85 backdrop-blur-md border-white/8"
           }`}
-          style={{ paddingLeft: "3rem", paddingRight: "3rem" }}
+          style={{ paddingLeft: "1.5rem", paddingRight: "1.5rem" }}
         >
           {/* Inner container */}
           <div className="relative flex items-center justify-between h-16 md:h-[72px]">

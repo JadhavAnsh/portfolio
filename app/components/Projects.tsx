@@ -18,7 +18,7 @@ export default function Projects() {
         style={{
           display: "flex",
           flexDirection: "column",
-          gap: "10px",
+          gap: "14px",
         }}
       >
         {PROJECTS.map((project, i) => (
