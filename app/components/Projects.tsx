@@ -1,6 +1,6 @@
-import { ExternalLink, Github } from "lucide-react";
-import AnimatedSection from "./AnimatedSection";
+import { Github } from "lucide-react";
 import { PROJECTS } from "../lib/constants";
+import AnimatedSection from "./AnimatedSection";
 
 export default function Projects() {
   return (
@@ -10,7 +10,7 @@ export default function Projects() {
       </AnimatedSection>
       <AnimatedSection delay={0.1}>
         <h2 className="section-title">
-          Selected Works<span className="text-accent"> /</span>
+          Projects<span className="text-accent"> /</span>
         </h2>
       </AnimatedSection>
 
@@ -56,7 +56,7 @@ export default function Projects() {
 
                 {/* Action Buttons */}
                 <div className="flex items-center gap-2.5 shrink-0">
-                  <a
+                  {/* <a
                     href={project.liveUrl}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -64,7 +64,7 @@ export default function Projects() {
                     aria-label={`View ${project.title} live`}
                   >
                     <ExternalLink size={14} aria-hidden="true" />
-                  </a>
+                  </a> */}
                   <a
                     href={project.githubUrl}
                     target="_blank"

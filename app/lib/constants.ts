@@ -1,13 +1,12 @@
 import type { LucideIcon } from "lucide-react";
 import {
   Code2,
-  Palette,
   Gauge,
-  Smartphone,
   Github,
   Linkedin,
-  Instagram,
   Mail,
+  Palette,
+  Smartphone
 } from "lucide-react";
 
 /* ─── Navigation ─── */
@@ -19,7 +18,7 @@ export interface NavLink {
 export const NAV_LINKS: NavLink[] = [
   { label: "Home", href: "#home" },
   { label: "Services", href: "#services" },
-  { label: "Works", href: "#works" },
+  { label: "Projects", href: "#projects" },
   { label: "About", href: "#about" },
   { label: "Contact", href: "#contact" },
 ];
@@ -72,48 +71,48 @@ export interface Project {
 
 export const PROJECTS: Project[] = [
   {
-    title: "Modern Marketing Website",
-    subtitle: "NURA",
+    title: "Offbeat Pravasi",
+    subtitle: "Mobile App",
     category: "Development",
     year: "2025",
     description:
-      "A sleek, conversion-focused marketing site with dynamic animations, responsive layout, and modern design system.",
-    tech: ["Next.js", "TailwindCSS", "Framer Motion"],
+      "A vibrant mobile platform for exploring unique travel stories, featuring real-time data and cross-device performance.",
+    tech: ["Flutter", "Dart", "Firebase", "Appwrite"],
     liveUrl: "#", // TODO: Replace with actual URL
-    githubUrl: "#", // TODO: Replace with actual URL
+    githubUrl: "https://github.com/const-nishant/offbeat_pravasi_v2", 
   },
   {
-    title: "Full-Stack Recruitment Platform",
-    subtitle: "Job Portal",
+    title: "Syncora Application",
+    subtitle: "Mobile App",
     category: "Development",
     year: "2025",
     description:
-      "End-to-end recruitment platform with job listings, applicant tracking, and role-based dashboards.",
-    tech: ["React", "Node.js", "MongoDB", "Express"],
+      "A decentralized social platform with crypto transactions via text and built-in Web3 wallets.",
+    tech: ["Flutter", "Dart", "Firebase", "Appwrite"],
     liveUrl: "#", // TODO: Replace with actual URL
-    githubUrl: "#", // TODO: Replace with actual URL
+    githubUrl: "https://github.com/const-nishant/syncora_application",
   },
   {
-    title: "SAAS Productivity Platform",
-    subtitle: "Productivity SAAS",
+    title: "Formata",
+    subtitle: "Web App",
     category: "Development",
-    year: "2025",
+    year: "2026",
     description:
-      "Comprehensive SaaS app for task management, team collaboration, and analytics dashboards.",
-    tech: ["React", "TypeScript", "Firebase", "TailwindCSS"],
+      "A centralized platform for secure document storage, automated verification workflows, and digital signatures.",
+    tech: ["Next.js", "TypeScript", "Python", "FastAPI"],
     liveUrl: "#", // TODO: Replace with actual URL
-    githubUrl: "#", // TODO: Replace with actual URL
+    githubUrl: "https://github.com/JadhavAnsh/formata",
   },
   {
-    title: "ML Recommendation Engine",
-    subtitle: "CineRec",
-    category: "ML / Development",
-    year: "2025",
+    title: "PR-Forge",
+    subtitle: "CLI Tool",
+    category: "CLI Tool",
+    year: "2026",
     description:
-      "Machine learning-powered movie recommendation system with collaborative filtering and content-based algorithms.",
-    tech: ["Python", "Flask", "Scikit-learn", "React"],
+      "A Rust CLI tool that generates standardized GitHub PR summaries in markdown format based on branch comparisons.",
+    tech: ["Rust"],
     liveUrl: "#", // TODO: Replace with actual URL
-    githubUrl: "#", // TODO: Replace with actual URL
+    githubUrl: "https://github.com/JadhavAnsh/pr-forge",
   },
 ];
 
