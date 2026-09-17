@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 import { ArrowUpRight, MessageCircle } from "lucide-react";
 import { PERSONAL } from "../lib/constants";
 
@@ -63,6 +64,12 @@ const ctaVariants = {
 };
 
 export default function Hero() {
+  const [animateHero, setAnimateHero] = useState(false);
+
+  useEffect(() => {
+    setAnimateHero(true);
+  }, []);
+
   return (
     <section
       id="home"
@@ -87,8 +94,8 @@ export default function Hero() {
           className="text-[clamp(2.5rem,10vw,9rem)] font-extrabold leading-[0.9] tracking-tighter font-display"
           style={{ perspective: "600px" }}
           variants={containerVariants}
-          initial="hidden"
-          animate="visible"
+          initial={animateHero ? "hidden" : false}
+          animate={animateHero ? "visible" : false}
         >
           {nameChars.map((char, i) => {
             const isFirstName = i < 4;
@@ -114,8 +121,8 @@ export default function Hero() {
         <motion.p
           className="text-base sm:text-lg md:text-xl text-secondary max-w-md mx-auto leading-relaxed"
           variants={subtitleVariants}
-          initial="hidden"
-          animate="visible"
+          initial={animateHero ? "hidden" : false}
+          animate={animateHero ? "visible" : false}
         >
           {PERSONAL.role} crafting{" "}
           <span className="text-accent font-medium">beautiful</span>,{" "}
@@ -127,8 +134,8 @@ export default function Hero() {
         <motion.div
           className="flex flex-col sm:flex-row items-center justify-center gap-5"
           variants={ctaVariants}
-          initial="hidden"
-          animate="visible"
+          initial={animateHero ? "hidden" : false}
+          animate={animateHero ? "visible" : false}
         >
           <a href="#works" className="btn-primary">
             View Projects

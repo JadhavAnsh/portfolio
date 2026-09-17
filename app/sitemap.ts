@@ -1,11 +1,12 @@
 import type { MetadataRoute } from "next";
+import { getSiteUrl } from "./lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://anshjadhav.in";
+  const baseUrl = getSiteUrl();
 
   return [
     {
-      url: baseUrl,
+      url: `${baseUrl}/`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 1,

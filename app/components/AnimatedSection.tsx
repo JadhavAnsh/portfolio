@@ -1,7 +1,7 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
-import { useRef, type ReactNode } from "react";
+import { motion, useInView, useReducedMotion } from "framer-motion";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 
 interface AnimatedSectionProps {
   children: ReactNode;
@@ -19,7 +19,13 @@ export default function AnimatedSection({
   duration = 0.7,
 }: AnimatedSectionProps) {
   const ref = useRef<HTMLDivElement>(null);
+  const [mounted, setMounted] = useState(false);
+  const reducedMotion = useReducedMotion();
   const isInView = useInView(ref, { once: true, margin: "-80px" });
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const directionMap = {
     up: { y: 40, x: 0 },
@@ -34,9 +40,13 @@ export default function AnimatedSection({
     <motion.div
       ref={ref}
       className={className}
-      initial={{ opacity: 0, x, y, filter: "blur(6px)" }}
+      initial={
+        mounted && !reducedMotion
+          ? { opacity: 0, x, y, filter: "blur(6px)" }
+          : false
+      }
       animate={
-        isInView
+        !mounted || isInView || reducedMotion
           ? { opacity: 1, x: 0, y: 0, filter: "blur(0px)" }
           : { opacity: 0, x, y, filter: "blur(6px)" }
       }

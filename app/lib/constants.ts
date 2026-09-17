@@ -39,9 +39,9 @@ export const SERVICES: Service[] = [
   },
   {
     icon: Smartphone,
-    title: "Mobile App Development",
+    title: "App Development",
     description:
-      "Cross-platform mobile apps with React Native and Flutter. Native-feel experiences, smooth animations, and optimized performance across iOS and Android.",
+      "Cross-platform apps with React Native, Flutter, Electron, and Tauri. Native-feel experiences, smooth animations, and optimized performance across all platforms.",
   },
   {
     icon: Palette,
